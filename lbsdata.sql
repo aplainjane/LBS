@@ -38,3 +38,15 @@ INSERT INTO `user` VALUES (4, 'Diana', 'password012');
 INSERT INTO `user` VALUES (5, 'Lucy', 'Team A');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- tiepian表的生成
+-- ----------------------------
+
+
+CREATE TABLE `tiepian` (
+                           `tiepian_id` int NOT NULL AUTO_INCREMENT,
+                           `adress` varchar(100) DEFAULT NULL,
+                           `comment` varchar(100) DEFAULT NULL,
+                           PRIMARY KEY (`tiepian_id`)
+) ENGINE=InnoDB DEFA
