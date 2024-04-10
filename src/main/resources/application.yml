@@ -3,10 +3,10 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/lbsdata?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: cz9966523
+    password: 123456
 logging:
   level:
-    com.ky: debug
+    com.team: debug
   pattern:
     dateformat: HH:mm:ss
 
