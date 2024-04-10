@@ -2,7 +2,6 @@ package com.team.demo.generator.service;
 
 import com.team.demo.generator.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.springframework.util.DigestUtils;
 
 /**
  * <p>
@@ -13,14 +12,5 @@ import org.springframework.util.DigestUtils;
  * @since 2024年04月08日
  */
 public interface UserService extends IService<User> {
-
-
     String login(User user);
-
 }
-
-
-
-
-
-

@@ -6,10 +6,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.team.demo.config.Result;
 import com.team.demo.generator.dao.UserMapper;
 import com.team.demo.generator.entity.User;
-import com.team.demo.generator.service.impl.UserServiceImpl;
+import com.team.demo.generator.service.UserService;
 import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.web.bind.annotation.*;
-import com.team.demo.generator.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -30,6 +29,7 @@ public class UserController {
 
     @Resource
     UserMapper userMapper;
+
     @Resource
     UserService userService;
 
@@ -95,10 +95,9 @@ public class UserController {
         String token = userService.login(user);
         if(token == null){
             //表示后端查询失败,返回用户201
-            return Result.fail();
+            return Result.error("101","密码错误");
         }   //表示有数据,返回值为200
         return Result.success(token);
     }
-
 }
 

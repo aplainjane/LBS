@@ -5,7 +5,6 @@ import com.team.demo.generator.dao.UserMapper;
 import com.team.demo.generator.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.team.demo.generator.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -23,8 +22,6 @@ import java.util.UUID;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-
-    @Resource
     private UserMapper userMapper;
 
     @Override

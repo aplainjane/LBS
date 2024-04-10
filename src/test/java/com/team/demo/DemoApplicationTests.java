@@ -85,6 +85,15 @@ class DemoApplicationTests {
 		userMapper.update(user,wrapper);
 	}
 
+	/*@Test
+	void testUpdateUser2() {
+		List<Integer> ids = List.of(1, 2, 4);
+		UpdateWrapper<User> wrapper = new UpdateWrapper<User>()
+				.setSql("distance = distance + 1" )
+				.in("id",ids);
+		userMapper.update(null,wrapper);
+	}*/
+
 	@Test
 	void testLogin()
 	{
@@ -97,14 +106,6 @@ class DemoApplicationTests {
 
 		System.out.println("user = " + find);
 	}
-	/*@Test
-	void testUpdateUser2() {
-		List<Integer> ids = List.of(1, 2, 4);
-		UpdateWrapper<User> wrapper = new UpdateWrapper<User>()
-				.setSql("distance = distance + 1" )
-				.in("id",ids);
-		userMapper.update(null,wrapper);
-	}*/
 
 
 }

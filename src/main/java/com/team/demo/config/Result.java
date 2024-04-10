@@ -5,13 +5,6 @@ public class Result<T> {
     private String msg;
     private T data;
 
-    public static Result fail() {
-        Result result = new Result<>();
-        result.setCode("10");
-        result.setMsg("失败");
-        return result;
-    }
-
     public String getCode() {
         return code;
     }
