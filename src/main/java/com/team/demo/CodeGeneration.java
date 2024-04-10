@@ -28,7 +28,7 @@ public class CodeGeneration {
 
 
 
-        DataSourceConfig dsc = new DataSourceConfig.Builder("jdbc:mysql://localhost:3306/lbsdata","root","123456")
+        DataSourceConfig dsc = new DataSourceConfig.Builder("jdbc:mysql://localhost:3306/rjgc","root","zyt622312")
                 .dbQuery(mySqlQuery).build();
         //通过datasourceConfig创建AutoGenerator
         AutoGenerator generator = new AutoGenerator(dsc);
