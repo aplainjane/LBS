@@ -39,5 +39,5 @@ public interface UserMapper extends BaseMapper<User> {
     Page<User> findP(Integer page);
 
 
-
+    User findUserByUP(User user);
 }

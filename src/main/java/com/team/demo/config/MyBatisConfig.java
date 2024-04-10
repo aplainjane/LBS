@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.team.demo.generator.dao")
+//@MapperScan("com.team.demo.generator.dao")
 public class MyBatisConfig {
 
     @Bean

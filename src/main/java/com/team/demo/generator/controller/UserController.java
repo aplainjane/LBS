@@ -6,8 +6,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.team.demo.config.Result;
 import com.team.demo.generator.dao.UserMapper;
 import com.team.demo.generator.entity.User;
+import com.team.demo.generator.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.web.bind.annotation.*;
+import com.team.demo.generator.service.UserService;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -28,6 +30,8 @@ public class UserController {
 
     @Resource
     UserMapper userMapper;
+    @Resource
+    UserService userService;
 
     @GetMapping("/")
     public List<User> getUserList() {
@@ -84,5 +88,17 @@ public class UserController {
         userMapper.selectPage(new Page<>(pageNum,pageSize), Wrappers.<User>lambdaQuery().like(User::getUsername,search));
         return Result.success();
     }
+
+    @PostMapping("/login")
+    public Result login(@RequestBody User user){
+        //业务逻辑: 根据u/p查询数据库 true: token false null
+        String token = userService.login(user);
+        if(token == null){
+            //表示后端查询失败,返回用户201
+            return Result.fail();
+        }   //表示有数据,返回值为200
+        return Result.success(token);
+    }
+
 }
 

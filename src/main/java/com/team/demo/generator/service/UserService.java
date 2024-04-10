@@ -2,6 +2,7 @@ package com.team.demo.generator.service;
 
 import com.team.demo.generator.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.util.DigestUtils;
 
 /**
  * <p>
@@ -13,4 +14,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User> {
 
+
+    String login(User user);
+
 }
+
+
+
+
+
+

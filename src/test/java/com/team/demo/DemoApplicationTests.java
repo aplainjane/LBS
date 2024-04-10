@@ -85,6 +85,18 @@ class DemoApplicationTests {
 		userMapper.update(user,wrapper);
 	}
 
+	@Test
+	void testLogin()
+	{
+		User user = new User();
+
+		user.setUsername("Lucy");
+		user.setPassword("2000");
+
+		User find = userMapper.findUserByUP(user);
+
+		System.out.println("user = " + find);
+	}
 	/*@Test
 	void testUpdateUser2() {
 		List<Integer> ids = List.of(1, 2, 4);

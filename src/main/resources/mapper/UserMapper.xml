@@ -38,6 +38,12 @@
         delete from user where Id = #{id}
     </delete>
 
+    <select id="findUserByUP" parameterType="com.team.demo.generator.entity.User" resultType="com.team.demo.generator.entity.User">
+        SELECT * FROM user WHERE id = #{id} AND password = #{password}
+    </select>
+
+
+
 
 
 
