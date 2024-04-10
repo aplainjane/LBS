@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan("com.generator.dao")
-@ComponentScan(basePackages = {"com.generator.controller"})
-@ComponentScan(basePackages = {"com.generator.service"})
 @ComponentScan(basePackages = {"com.team.demo.common"})
 public class DemoApplication {
 
