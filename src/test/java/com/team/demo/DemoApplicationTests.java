@@ -1,22 +1,29 @@
 package com.team.demo;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.team.demo.config.Result;
 import com.team.demo.generator.dao.UserMapper;
 import com.team.demo.generator.entity.User;
+import com.team.demo.generator.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
 
 @SpringBootTest
 class DemoApplicationTests {
 
 	@Autowired
 	private UserMapper userMapper;
+
+
 
 	@Test
 	void contextLoads() {
@@ -75,7 +82,6 @@ class DemoApplicationTests {
 	{
 		//更新数值
 		User user = new User();
-
 		user.setPassword("2000");
 
 		//条件
@@ -95,16 +101,23 @@ class DemoApplicationTests {
 	}*/
 
 	@Test
-	void testLogin()
+    void testLogin()
 	{
 		User user = new User();
 
 		user.setUsername("Lucy");
-		user.setPassword("2000");
+		user.setPassword("Team A");
 
-		User find = userMapper.findUserByUP(user);
+		//业务逻辑: 根据u/p查询数据库 true: token false null
+		User find_user = userMapper.findUserByUP(user);
 
-		System.out.println("user = " + find);
+		if(find_user == null){
+			//表示后端查询失败,返回用户201
+			System.out.println("not found");
+		}   //表示有数据,返回值为200
+		else {
+			System.out.println(find_user);
+		}
 	}
 
 

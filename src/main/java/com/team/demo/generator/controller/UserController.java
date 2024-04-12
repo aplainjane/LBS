@@ -95,7 +95,7 @@ public class UserController {
         String token = userService.login(user);
         if(token == null){
             //表示后端查询失败,返回用户201
-            return Result.error("101","密码错误");
+            return Result.error("201","密码错误");
         }   //表示有数据,返回值为200
         return Result.success(token);
     }
