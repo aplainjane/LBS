@@ -21,6 +21,8 @@ import java.util.*;
  * @author ky
  * @since 2024年04月08日
  */
+
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
