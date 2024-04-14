@@ -1,6 +1,6 @@
 <template>
   <div style="height:50px; line-height: 50px; border-bottom: 1px solid #ccc; display: flex;">
-    <div style="width: 200px; padding-left: 30px; font-weight: bold; color: skyblue;">后台管理</div>
+    <div style="width: 200px; padding-left: 30px; font-weight: bold; color: skyblue;">用 户 操 作</div>
     <div style="flex: 1;"></div>
     <div style="width: 100px;">
       <el-dropdown style="display: contents;">
@@ -29,7 +29,7 @@
     </div>
   </div>
 </template>
-<script setup>
+<script lang="ts" setup>
 import {ArrowDown, Document, SwitchButton, UserFilled} from "@element-plus/icons-vue";
 
 // let Name = JSON.parse(sessionStorage.getItem("user")||{}).data.nickName;

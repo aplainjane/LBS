@@ -1,5 +1,4 @@
 <script setup>
-import Aside from "@/components/Aside.vue";
 import Header from "@/components/header.vue";
 </script>
 
@@ -8,8 +7,6 @@ import Header from "@/components/header.vue";
   <Header/>
   <!--主体-->
   <div style="display: flex">
-    <!--      侧边栏-->
-    <Aside/>
     <!--      内容区域-->
     <RouterView style="flex: 1"/>
   </div>

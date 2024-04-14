@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Layout from "@/layout/Layout.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
+import Info from "@/views/Info.vue";
+import bdMap from "@/views/bdMap.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +14,11 @@ const router = createRouter({
       redirect: '/login',
       component: Layout,
       children:[
+        {
+          path: 'map',
+          name: 'map',
+          component: bdMap
+        }
       ]
     },
     {
@@ -23,6 +30,11 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: "/info",
+      name: "info",
+      component: Info
     }
   ]
 })
