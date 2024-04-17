@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.team.demo.config.Result;
+import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.dao.UserMapper;
+import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.entity.User;
 import com.team.demo.generator.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -22,6 +24,9 @@ class DemoApplicationTests {
 
 	@Autowired
 	private UserMapper userMapper;
+
+	@Autowired
+	private ImageMapper imageMapper;
 
 
 
@@ -106,7 +111,7 @@ class DemoApplicationTests {
 		User user = new User();
 
 		user.setUsername("Lucy");
-		user.setPassword("Team A");
+		user.setPassword("2000");
 
 		//业务逻辑: 根据u/p查询数据库 true: token false null
 		User find_user = userMapper.findUserByUP(user);
@@ -118,6 +123,14 @@ class DemoApplicationTests {
 		else {
 			System.out.println(find_user);
 		}
+	}
+
+	@Test
+	void testFindImage()
+	{
+		Image image = imageMapper.selectById(1);
+		System.out.println(image.getPath());
+
 	}
 
 

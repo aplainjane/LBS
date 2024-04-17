@@ -35,23 +35,10 @@ public class UserController {
     @Resource
     UserService userService;
 
-    @GetMapping("/")
-    public List<User> getUserList() {
-        List<User> r = new ArrayList<>(users.values());
-        return r;
-    }
-
-
-    @PostMapping("/")
-    public String postUser(@RequestBody User user) {
-        users.put(user.getId(), user);
-        return "success";
-    }
 
 
     @GetMapping("/{id}")
     public User getUser(@PathVariable Integer id) {
-
         User user = userMapper.findById(id);
         return user;
     }
@@ -63,33 +50,14 @@ public class UserController {
         return Result.success();
     }
 
-    @GetMapping("distance/{id}")
-    public Page<User> getPager(@PathVariable Integer id) {
-
-        return userMapper.findP(id);
-    }
-
-    @GetMapping("/find")
-    public List<User> find()
-    {
-        List<Integer> userL = new ArrayList<>();
-        userL.add(1);
-        userL.add(2);
-        userL.add(3);
-        userL.add(4);
-        userL.add(5);
-        List<User> user = userMapper.queryUserByIds(userL);
-        System.out.println("user = " + user);
-        return user;
-    }
 
 
-    @GetMapping
+    /*@GetMapping
     public Result<?> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize,@RequestParam String search)
     {
         userMapper.selectPage(new Page<>(pageNum,pageSize), Wrappers.<User>lambdaQuery().like(User::getUsername,search));
         return Result.success();
-    }
+    }*/
 
     @PostMapping("/login")
     public Result login(@RequestBody User user){

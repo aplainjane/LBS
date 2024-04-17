@@ -22,15 +22,16 @@ import java.util.UUID;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
+    @Resource
     private UserMapper userMapper;
 
     @Override
     public String login(User user) {
-        String password = user.getPassword();
+        /*String password = user.getPassword();
         byte[] bytes = password.getBytes();
         //1.将密码加密
         String md5Password = DigestUtils.md5DigestAsHex(bytes);
-        user.setPassword(md5Password);
+        user.setPassword(md5Password);*/
         //2.根据用户名和密码查询数据库
         User userDB = userMapper.findUserByUP(user);
         //3.判断userDB是否有值
