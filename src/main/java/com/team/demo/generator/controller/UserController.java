@@ -60,7 +60,7 @@ public class UserController {
     }*/
 
     @PostMapping("/login")
-    public Result login(@RequestBody User user){
+    public Result<?> login(@RequestBody User user){
         //业务逻辑: 根据u/p查询数据库 true: token false null
         String token = userService.login(user);
         if(token == null){
