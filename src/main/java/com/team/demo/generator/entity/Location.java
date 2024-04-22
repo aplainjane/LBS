@@ -10,4 +10,6 @@ public class Location {
     double longitude = 0;
 
     double latitude= 0;
+
+    Integer id;
 }

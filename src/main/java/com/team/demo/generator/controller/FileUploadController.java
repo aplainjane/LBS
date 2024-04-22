@@ -25,10 +25,11 @@ public class FileUploadController {
     public ImageMapper imageMapper;
 
     @PostMapping("/upload")
-    public Result<?> uploadFile(@RequestParam(value = "file",required = false) MultipartFile file, @RequestParam Location location,@RequestParam Integer userId){
+    public Result<?> uploadFile(@RequestParam(value = "file",required = false) MultipartFile file, @RequestParam double latitude,
+                                @RequestParam double longitude,@RequestParam Integer id){
         // 判断文件是否为空
-        if(file.isEmpty()){
-            return Result.error("404","not found");
+        if(file == null || file.isEmpty()){
+            return Result.error("404","没收到你的图片");
         }
         // 获取传过来的文件名字
         String OriginalFilename=file.getOriginalFilename();
@@ -37,14 +38,14 @@ public class FileUploadController {
         String fileName= null;
         fileName = System.currentTimeMillis()+"."+OriginalFilename.substring(OriginalFilename.lastIndexOf(".")+1);
         Image image = new Image();
-        image.setLongitude(location.getLongitude());
-        image.setLatitude(location.getLatitude());
-        image.setUserId(userId);
-        image.setPath("F:\\java项目\\lbs-master\\teamdata\\src\\assets\\images\\"+fileName);
+        image.setLongitude(longitude);
+        image.setLatitude(latitude);
+        image.setUserId(id);
+        image.setPath("F:\\java项目\\lbs-master\\assets\\images\\"+fileName);
 
         // 设置保存地址（这里是转义字符）
         //1.后台保存位置
-        String path = "F:\\java项目\\lbs-master\\teamdata\\src\\assets\\images\\";
+        String path = "F:\\java项目\\lbs-master\\assets\\images\\";
         File dest=new File(path+fileName);
         // 判断文件是否存在
         if(!dest.getParentFile().exists()){
