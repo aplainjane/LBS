@@ -9,6 +9,7 @@ import com.team.demo.config.Result;
 import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.dao.UserMapper;
 import com.team.demo.generator.entity.User;
+import com.team.demo.generator.service.ImageService;
 import com.team.demo.generator.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ class DemoApplicationTests {
 	@Autowired
 	private ImageMapper imageMapper;
 
-
+	@Autowired
+	private ImageService imageService;
 
 	@Test
 	void contextLoads() {
@@ -136,7 +138,9 @@ class DemoApplicationTests {
 	@Test
 	void testLocateImage()
 	{
-		List<Image> image = imageMapper.findAllImages();
+
+		List<Image> imageL = imageMapper.findAllImages();
+		List<Image> image = imageService.around(116,36,imageL,500);
 		System.out.println(image);
 
 	}
