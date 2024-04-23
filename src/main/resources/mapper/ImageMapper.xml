@@ -20,7 +20,27 @@
         UPDATE user SET distance = distance - #{meter} ${ew.customSqlSegment}
     </update>-->
 
+    <!--<select id="locateImages" parameterType="java.lang.Double" resultType="com.team.demo.generator.entity.Image">
+        SELECT *
+        FROM image
+        WHERE
+        id = #{radius}
+    </select>-->
 
+    <!--<select id="queryImageByIds" resultType="com.team.demo.generator.entity.User">
+        SELECT *
+        FROM user
+        <if test="ids != null">
+            WHERE id IN
+            <foreach collection="ids" open="(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </select>-->
+
+    <select id="findAllImages" resultType="com.team.demo.generator.entity.Image">
+        SELECT * FROM image
+    </select>
 
 
 </mapper>

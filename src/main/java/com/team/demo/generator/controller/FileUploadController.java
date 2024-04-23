@@ -1,3 +1,4 @@
+/*
 package com.team.demo.generator.controller;
 
 import com.team.demo.config.Result;
@@ -15,6 +16,7 @@ import com.team.demo.generator.entity.Location;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -65,9 +67,11 @@ public class FileUploadController {
 
     }
 
-    /**
+    */
+/**
      * 获取文件的流
-     */
+     *//*
+
     @GetMapping("/image")
     public ResponseEntity<Resource> getImage(@RequestParam Integer imageId) throws Exception {
         Image image = imageMapper.selectById(imageId);
@@ -75,12 +79,23 @@ public class FileUploadController {
         Resource resource = new UrlResource(path.toUri());
         if (resource.exists() || resource.isReadable()) {
             return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_JPEG)
+                    .contentType(MediaType.IMAGE_PNG)
                     .body(resource);
         } else {
             throw new RuntimeException("Could not read the file!");
         }
     }
+
+
+    */
+/*@GetMapping("/locate")
+    public List<Image> locateLinkImage(@RequestParam double latitude,
+                                       @RequestParam double longitude,@RequestParam double radius)
+    {
+        //return imageMapper.selectImagesWithinRadius(latitude,longitude,radius);
+        //return new List<Image>();
+    }*//*
+
 
 
     @GetMapping("/findImage/{id}")
@@ -89,4 +104,4 @@ public class FileUploadController {
     }
 
 
-}
+}*/

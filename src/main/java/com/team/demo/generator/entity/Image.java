@@ -6,13 +6,35 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
+import java.io.Serializable;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
+/**
+ * <p>
+ *
+ * </p>
+ *
+ * @author ky
+ * @since 2024年04月23日
+ */
 @Getter
 @Setter
 @Accessors(chain = true)
 @TableName("image")
-public class Image {
+public class Image implements Serializable {
 
-    @TableField("id")
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     @TableField("path")
@@ -22,8 +44,10 @@ public class Image {
     private Integer userId;
 
     @TableField("longitude")
-    private double longitude;
+    private Double longitude;
 
     @TableField("latitude")
-    private double latitude;
+    private Double latitude;
+
+
 }

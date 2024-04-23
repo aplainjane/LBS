@@ -4,10 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.team.demo.generator.entity.Image;
 import com.team.demo.config.Result;
 import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.dao.UserMapper;
-import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.entity.User;
 import com.team.demo.generator.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -128,8 +128,16 @@ class DemoApplicationTests {
 	@Test
 	void testFindImage()
 	{
-		Image image = imageMapper.selectById(1);
+		Image image = imageMapper.selectById(2);
 		System.out.println(image.getPath());
+
+	}
+
+	@Test
+	void testLocateImage()
+	{
+		List<Image> image = imageMapper.findAllImages();
+		System.out.println(image);
 
 	}
 
