@@ -7,11 +7,12 @@
         <id column="id" property="id" />
         <result column="username" property="username" />
         <result column="password" property="password" />
+        <result column="introduction" property="introduction" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, username, password
+        id, username, password, introduction
     </sql>
 
     <!--<update id="updateBalanceByIds">
@@ -27,7 +28,6 @@
                 #{id}
             </foreach>
         </if>
-        LIMIT 10
     </select>
 
     <select id="findById" resultType="com.team.demo.generator.entity.User">
@@ -40,8 +40,22 @@
 
 
     <select id="findUserByUP" parameterType="com.team.demo.generator.entity.User" resultType="com.team.demo.generator.entity.User">
-        SELECT * FROM user WHERE id = #{id} AND password = #{password}
+        SELECT * FROM user WHERE username = #{username} AND password = #{password}
     </select>
+
+    <!--<select id="selectImagesWithinRadius" parameterType="java.lang.Double" resultType="com.team.demo.generator.entity.Image">
+        SELECT *
+        FROM image
+        WHERE (
+        6371 * acos(
+        cos(radians(#{latitude})) *
+        cos(radians(latitude)) *
+        cos(radians(longitude) - radians(#{longitude})) +
+        sin(radians(#{latitude})) *
+        sin(radians(latitude))
+        )
+        ) <= #{radius}
+    </select>-->
 
 
 </mapper>

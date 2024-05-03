@@ -35,6 +35,12 @@ public class User implements Serializable {
     @TableField("password")
     private String password;
 
+    @TableField("introduction")
+    private String introduction;
+
+    @TableField(exist = false)
+    private int imageNum;
+
     /*@TableField("distance")
     private Integer distance;*/
 
