@@ -21,4 +21,6 @@ public interface ImageMapper extends BaseMapper<Image> {
     void addImage(Image image);
 
     List<Image> findAllImages();
+
+    List<Image> findUserImages(Integer userId);
 }

@@ -42,5 +42,9 @@
         SELECT * FROM image
     </select>
 
+    <select id="findUserImages" parameterType="java.lang.Integer" resultType="com.team.demo.generator.entity.Image">
+        SELECT * FROM image where userId = #{userId}
+    </select>
+
 
 </mapper>

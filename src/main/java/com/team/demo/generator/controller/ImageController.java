@@ -117,5 +117,10 @@ public class ImageController {
         List<Image> imageL = imageMapper.findAllImages();
         return imageService.around(longitude,latitude,imageL,radius);
     }
+
+    /*@GetMapping("/findImageByObject")
+    public Image findImage(@PathVariable Integer id){
+        return imageMapper.selectById(id);
+    }*/
 }
 

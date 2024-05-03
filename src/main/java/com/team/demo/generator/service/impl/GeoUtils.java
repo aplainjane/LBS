@@ -11,27 +11,28 @@ public class GeoUtils {
      * @param lon2 第二个点的经度
      * @return 两点间的距离，单位为千米
      */
-    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
-        // 地球半径，单位为千米
-        final int R = 6371;
+    public static double calculateDistance(double startLatitude, double startLongitude, double endLatitude, double endLongitude) {
+        // 地球半径，单位为米
+        final double EARTH_RADIUS = 6371393.0;
 
         // 将纬度和经度转换为弧度
-        double lat1Radians = Math.toRadians(lat1);
-        double lat2Radians = Math.toRadians(lat2);
-        double lon1Radians = Math.toRadians(lon1);
-        double lon2Radians = Math.toRadians(lon2);
+        double startLatitudeRadians = Math.toRadians(startLatitude);
+        double endLatitudeRadians = Math.toRadians(endLatitude);
+        double startLongitudeRadians = Math.toRadians(startLongitude);
+        double endLongitudeRadians = Math.toRadians(endLongitude);
 
         // 计算纬度和经度之差
-        double deltaLat = lat2Radians - lat1Radians;
-        double deltaLon = lon2Radians - lon1Radians;
+        double deltaLatitude = endLatitudeRadians - startLatitudeRadians;
+        double deltaLongitude = endLongitudeRadians - startLongitudeRadians;
 
         // 使用Haversine公式计算两点间的球面距离
-        double a = Math.pow(Math.sin(deltaLat / 2), 2) +
-                Math.cos(lat1Radians) * Math.cos(lat2Radians) *
-                        Math.pow(Math.sin(deltaLon / 2), 2);
+        double a = Math.pow(Math.sin(deltaLatitude / 2), 2) +
+                Math.cos(startLatitudeRadians) * Math.cos(endLatitudeRadians) *
+                        Math.pow(Math.sin(deltaLongitude / 2), 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        double distance = R * c;
+        double distance = EARTH_RADIUS * c;
 
+        //System.out.println("Distance: " + distance);
         return distance;
     }
 }
