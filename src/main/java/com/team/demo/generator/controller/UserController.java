@@ -35,7 +35,7 @@ public class UserController {
 
     static Map<Integer, User> users = Collections.synchronizedMap(new HashMap<>());
 
-    private List<String> tokens = new ArrayList<>();
+
 
     @Resource
     UserMapper userMapper;
@@ -54,7 +54,7 @@ public class UserController {
 
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/secure/{id}")
     public User getUser(@PathVariable Integer id) {
         /*if(!tokens.contains(token))
         {
@@ -91,11 +91,10 @@ public class UserController {
             return Result.error("201","密码错误");
         }   //表示有数据,返回值为200
         //String A_token = TokenEncryption.generateToken(user.getId().toString(), user.getUsername());
-        tokens.add(token);
         return Result.success(token);
     }
 
-    @GetMapping("getLocation/{id}")
+    @GetMapping("/secure/getLocation/{id}")
     public List<DetailedData> locateLink(@RequestParam double latitude,
                                          @RequestParam double longitude,@RequestParam double radius)
     {
