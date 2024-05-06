@@ -39,6 +39,7 @@ public class JwtFilter implements Filter
         }
         // Except OPTIONS, other request should be checked by JWT
         else {
+            //System.out.println(token);
 
             if (token == null) {
                 response.getWriter().write("没有token！");

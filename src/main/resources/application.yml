@@ -4,11 +4,16 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
 logging:
   level:
     com.team: debug
   pattern:
     dateformat: HH:mm:ss
+
 
 server:
   port: 9091

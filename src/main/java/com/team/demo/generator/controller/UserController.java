@@ -61,17 +61,13 @@ public class UserController {
             return null;
         }*/
         User user = userMapper.findById(id);
+        user.setPassword("you can't know!!!");
         List<Image> imageL = imageMapper.findUserImages(id);
         user.setImageNum(imageL.size());
         return user;
     }
 
-    @PostMapping
-    public Result<?> save(@RequestBody User user)
-    {
-        userMapper.insert(user);
-        return Result.success();
-    }
+
 
 
 
