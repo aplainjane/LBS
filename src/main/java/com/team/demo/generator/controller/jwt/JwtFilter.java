@@ -4,6 +4,8 @@ package com.team.demo.generator.controller.jwt;
 
 import com.auth0.jwt.interfaces.Claim;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,7 @@ import java.util.Map;
  * JWT过滤器，拦截 /secure的请求
  */
 @Slf4j
-@WebFilter(filterName = "JwtFilter", urlPatterns = "/secure/*")
+@WebFilter(urlPatterns = "/secure/*")
 public class JwtFilter implements Filter
 {
     @Override
