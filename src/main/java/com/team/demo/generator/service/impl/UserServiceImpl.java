@@ -1,5 +1,6 @@
 package com.team.demo.generator.service.impl;
 
+import com.team.demo.generator.controller.jwt.JwtUtil;
 import com.team.demo.generator.entity.User;
 import com.team.demo.generator.dao.UserMapper;
 import com.team.demo.generator.service.UserService;
@@ -40,7 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             return null;
         }
         //程序走到这里,说明用户名和密码正确 返回token
-        String token = UUID.randomUUID().toString();
+        String token = JwtUtil.createToken(userDB);
         return token;
     }
 }
