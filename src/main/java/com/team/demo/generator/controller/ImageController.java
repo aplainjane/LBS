@@ -80,7 +80,7 @@ public class ImageController {
     /**
      * 获取文件的流
      */
-    @GetMapping("/image")
+    @GetMapping("/secure/image")
     public ResponseEntity<Resource> getImage(@RequestParam Integer imageId) throws Exception {
         Image image = imageMapper.selectById(imageId);
         Path path = Paths.get(image.getPath());
