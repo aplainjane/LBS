@@ -30,7 +30,7 @@ import java.util.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/secure/user")
 public class UserController {
 
     static Map<Integer, User> users = Collections.synchronizedMap(new HashMap<>());
@@ -54,7 +54,7 @@ public class UserController {
 
 
 
-    @GetMapping("/secure/{id}")
+    @GetMapping("/{id}")
     public User getUser(@PathVariable Integer id) {
         /*if(!tokens.contains(token))
         {
@@ -82,19 +82,9 @@ public class UserController {
         return Result.success();
     }*/
 
-    @PostMapping("/login")
-    public Result<?> login(@RequestBody User user){
-        //业务逻辑: 根据u/p查询数据库 true: token false null
-        String token = userService.login(user);
-        if(token == null){
-            //表示后端查询失败,返回用户201
-            return Result.error("201","密码错误");
-        }   //表示有数据,返回值为200
-        //String A_token = TokenEncryption.generateToken(user.getId().toString(), user.getUsername());
-        return Result.success(token);
-    }
 
-    @GetMapping("/secure/getLocation/{id}")
+
+    @GetMapping("/getLocation/{id}")
     public List<DetailedData> locateLink(@RequestParam double latitude,
                                          @RequestParam double longitude,@RequestParam double radius)
     {

@@ -27,7 +27,7 @@ import java.util.List;
  * @since 2024年04月23日
  */
 @RestController
-@RequestMapping("/file")
+@RequestMapping("secure/file")
 public class ImageController {
     @javax.annotation.Resource
     public ImageMapper imageMapper;
@@ -80,7 +80,7 @@ public class ImageController {
     /**
      * 获取文件的流
      */
-    @GetMapping("/secure/image")
+    @GetMapping("/image")
     public ResponseEntity<Resource> getImage(@RequestParam Integer imageId) throws Exception {
         Image image = imageMapper.selectById(imageId);
         Path path = Paths.get(image.getPath());

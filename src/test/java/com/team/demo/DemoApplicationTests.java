@@ -28,7 +28,11 @@ import java.util.function.Function;
 class DemoApplicationTests {
 
 	@Autowired
+
 	private UserMapper userMapper;
+
+	@Autowired
+	private UserService userService;
 
 	@Autowired
 	private DetailedDataMapper detailedDataMapper;
@@ -124,10 +128,11 @@ class DemoApplicationTests {
 		User user = new User();
 
 		user.setUsername("Lucy");
-		user.setPassword("2000");
+		user.setPassword("Team A");
 
 		//业务逻辑: 根据u/p查询数据库 true: token false null
 		User find_user = userMapper.findUserByUP(user);
+		String token = userService.login(user);
 
 		if(find_user == null){
 			//表示后端查询失败,返回用户201
@@ -135,6 +140,7 @@ class DemoApplicationTests {
 		}   //表示有数据,返回值为200
 		else {
 			System.out.println(find_user);
+			System.out.println(token);
 		}
 	}
 
