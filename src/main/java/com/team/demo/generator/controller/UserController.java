@@ -61,6 +61,7 @@ public class UserController {
             return null;
         }*/
         User user = userMapper.findById(id);
+        user.setPassword("you can't know!!!");
         List<Image> imageL = imageMapper.findUserImages(id);
         user.setImageNum(imageL.size());
         return user;
