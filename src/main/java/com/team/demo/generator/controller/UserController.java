@@ -66,12 +66,7 @@ public class UserController {
         return user;
     }
 
-    @PostMapping
-    public Result<?> save(@RequestBody User user)
-    {
-        userMapper.insert(user);
-        return Result.success();
-    }
+
 
 
 

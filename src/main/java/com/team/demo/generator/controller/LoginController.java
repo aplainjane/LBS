@@ -36,6 +36,9 @@ public class LoginController {
     static Map<Integer, User> users = Collections.synchronizedMap(new HashMap<>());
 
     @Autowired
+    UserMapper userMapper;
+
+    @Autowired
     UserService userService;
 
 
@@ -50,6 +53,13 @@ public class LoginController {
         }   //表示有数据,返回值为200
         //String A_token = TokenEncryption.generateToken(user.getId().toString(), user.getUsername());
         return Result.success(token);
+    }
+
+    @PostMapping("/save")
+    public Result<?> save(@RequestBody User user)
+    {
+        userMapper.insert(user);
+        return Result.success();
     }
 
 
