@@ -64,6 +64,7 @@ public class UserController {
         user.setPassword("you can't know!!!");
         List<Image> imageL = imageMapper.findUserImages(id);
         user.setImageNum(imageL.size());
+        //Integer userId = (Integer) request.getAttribute("id");
         return user;
     }
 

@@ -2,7 +2,9 @@ package com.team.demo.generator.controller;
 
 
 import com.team.demo.config.Result;
+import com.team.demo.generator.dao.CommentMapper;
 import com.team.demo.generator.dao.ImageMapper;
+import com.team.demo.generator.entity.Comment;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.service.ImageService;
 import org.springframework.core.io.Resource;
@@ -35,6 +37,11 @@ public class ImageController {
 
     @javax.annotation.Resource
     public ImageService imageService;
+
+    @javax.annotation.Resource
+    public CommentMapper commentMapper;
+
+
 
     @PostMapping("/upload")
     public Result<?> uploadFile(@RequestParam(value = "file",required = false) MultipartFile file, @RequestParam double latitude,
@@ -116,6 +123,12 @@ public class ImageController {
     {
         List<Image> imageL = imageMapper.findAllImages();
         return imageService.around(longitude,latitude,imageL,radius);
+    }
+
+    @GetMapping("/comments")
+    public List<Comment> getImageComments(@RequestParam Integer imageid)
+    {
+        return commentMapper.findComment(imageid);
     }
 
     /*@GetMapping("/findImageByObject")

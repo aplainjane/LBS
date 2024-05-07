@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.demo.generator.dao.CommentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.team.demo.generator.entity.Comment">
+        <id column="id" property="id" />
+        <result column="userid" property="userid" />
+        <result column="imageid" property="imageid" />
+        <result column="contain" property="contain" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, userid, imageid, contain
+    </sql>
+
+    <!--<update id="updateBalanceByIds">
+        UPDATE user SET distance = distance - #{meter} ${ew.customSqlSegment}
+    </update>-->
+
+    <!--<select id="queryUserByIds" resultType="com.team.demo.generator.entity.User">
+        SELECT *
+        FROM user
+        <if test="ids != null">
+            WHERE id IN
+            <foreach collection="ids" open="(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="findById" resultType="com.team.demo.generator.entity.User">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <delete id="deleteById"  parameterType="java.lang.Integer">
+        delete from user where Id = #{id}
+    </delete>
+
+
+    <select id="findUserByUP" parameterType="com.team.demo.generator.entity.User" resultType="com.team.demo.generator.entity.User">
+        SELECT * FROM user WHERE username = #{username} AND password = #{password}
+    </select>-->
+
+    <!--<select id="selectImagesWithinRadius" parameterType="java.lang.Double" resultType="com.team.demo.generator.entity.Image">
+        SELECT *
+        FROM image
+        WHERE (
+        6371 * acos(
+        cos(radians(#{latitude})) *
+        cos(radians(latitude)) *
+        cos(radians(longitude) - radians(#{longitude})) +
+        sin(radians(#{latitude})) *
+        sin(radians(latitude))
+        )
+        ) <= #{radius}
+    </select>-->
+
+    <select id="findComment" parameterType="java.lang.Integer" resultType="com.team.demo.generator.entity.Comment">
+        SELECT * FROM comment WHERE imageid = #{imageid}
+    </select>
+
+</mapper>
