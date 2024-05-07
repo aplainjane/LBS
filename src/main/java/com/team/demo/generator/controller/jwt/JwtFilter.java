@@ -26,38 +26,31 @@ public class JwtFilter implements Filter
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        final HttpServletRequest request = (HttpServletRequest) req;
-        final HttpServletResponse response = (HttpServletResponse) res;
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) res;
 
         response.setCharacterEncoding("UTF-8");
-        //获取 header里的token
         final String token = request.getHeader("authorization");
 
         if ("OPTIONS".equals(request.getMethod())) {
             response.setStatus(HttpServletResponse.SC_OK);
             chain.doFilter(request, response);
-        }
-        // Except OPTIONS, other request should be checked by JWT
-        else {
-            //System.out.println(token);
-
+        } else {
             if (token == null) {
-                response.getWriter().write("没有token！");
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "没有token！");
                 return;
             }
 
             Map<String, Claim> userData = JwtUtil.verifyToken(token);
             if (userData == null) {
-                response.getWriter().write("token不合法！");
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "token不合法！");
                 return;
             }
+
             Integer id = userData.get("id").asInt();
             String userName = userData.get("userName").asString();
-            String password= userData.get("password").asString();
-            //拦截器 拿到用户信息，放到request中
             request.setAttribute("id", id);
             request.setAttribute("userName", userName);
-            request.setAttribute("password", password);
             chain.doFilter(req, res);
         }
     }
@@ -65,4 +58,12 @@ public class JwtFilter implements Filter
     @Override
     public void destroy() {
     }
+
+
+    /*public static Integer getUserId()
+    {
+        final HttpServletRequest request = (HttpServletRequest) req;
+
+        Integer userId = (Integer) request.getAttribute("id");
+    }*/
 }

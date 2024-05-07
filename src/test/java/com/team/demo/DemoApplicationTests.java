@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.team.demo.generator.dao.CommentMapper;
 import com.team.demo.generator.dao.DetailedDataMapper;
+import com.team.demo.generator.entity.Comment;
 import com.team.demo.generator.entity.DetailedData;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.config.Result;
@@ -39,6 +41,9 @@ class DemoApplicationTests {
 
 	@Autowired
 	private ImageMapper imageMapper;
+
+	@Autowired
+	private CommentMapper commentMapper;
 
 	@Autowired
 	private ImageService imageService;
@@ -152,6 +157,12 @@ class DemoApplicationTests {
 
 	}
 
+	@Test
+	void FindComment()
+	{
+		List<Comment> a = commentMapper.findComment(6);
+		System.out.println(a);
+	}
 
 
 	@Test

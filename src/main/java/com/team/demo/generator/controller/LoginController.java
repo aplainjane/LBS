@@ -11,6 +11,7 @@ import com.team.demo.generator.entity.User;
 import com.team.demo.generator.service.DataService;
 import com.team.demo.generator.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -46,6 +47,12 @@ public class LoginController {
     @PostMapping("/login")
     public Result<?> login(@RequestBody User user){
         //业务逻辑: 根据u/p查询数据库 true: token false null
+        /*String password = user.getPassword();
+        byte[] bytes = password.getBytes();
+        //1.将密码加密
+        String md5Password = DigestUtils.md5DigestAsHex(bytes);
+        user.setPassword(md5Password);*/
+        //user.setPassword(md5Password);
         String token = userService.login(user);
         if(token == null){
             //表示后端查询失败,返回用户201
@@ -58,6 +65,10 @@ public class LoginController {
     @PostMapping("/save")
     public Result<?> save(@RequestBody User user)
     {
+        if(userMapper.findUserByUP(user)!=null)
+        {
+            return Result.error("403","该用户已存在");
+        }
         userMapper.insert(user);
         return Result.success();
     }
