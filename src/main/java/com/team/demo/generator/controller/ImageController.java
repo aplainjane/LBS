@@ -19,6 +19,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -125,7 +126,7 @@ public class ImageController {
         return imageService.around(longitude,latitude,imageL,radius);
     }
 
-    @GetMapping("/comments")
+    @PostMapping("/comments")
     public List<Comment> getImageComments(@RequestParam Integer imageid)
     {
         return commentMapper.findComment(imageid);
@@ -135,5 +136,70 @@ public class ImageController {
     public Image findImage(@PathVariable Integer id){
         return imageMapper.selectById(id);
     }*/
+
+    @DeleteMapping("/comment/delete")
+    public Result<?> DeleteComment(@RequestParam Integer commentId,@RequestParam Integer userId)
+    {
+        Comment comment = commentMapper.selectById(commentId);
+        if(comment == null)
+        {
+            return Result.error("404","未找到路径");
+        }
+        if(comment.getUserid() == userId)
+        {
+            commentMapper.deleteById(commentId);
+            return Result.success();
+        }
+        else
+        {
+            return Result.error("403","无权限");
+        }
+    }
+
+    @PutMapping("/comment/update")
+    public Result<?> UpdateComment(@RequestParam Integer commentId,@RequestParam Integer userId,@RequestParam String newContain)
+    {
+        Comment comment = commentMapper.selectById(commentId);
+        if(comment == null)
+        {
+            return Result.error("404","未找到路径");
+        }
+        comment.setContain(newContain);
+        if(comment.getUserid() == userId)
+        {
+            commentMapper.updateById(comment);
+            return Result.success();
+        }
+        else
+        {
+            return Result.error("403","无权限");
+        }
+    }
+
+    @DeleteMapping("/image/delete")
+    public Result<?> deleteImage(@RequestParam Integer imageid,@RequestParam Integer userId)
+    {
+        Image image = imageMapper.selectById(imageid);
+        if(image == null)
+        {
+            return Result.error("404","未找到路径");
+        }
+
+        if(Objects.equals(image.getUserId(), userId))
+        {
+            List<Comment> comments = commentMapper.findComment(imageid);
+            for(Comment comment : comments)
+            {
+                commentMapper.deleteById(comment);
+            }
+            imageMapper.deleteById(image);
+            return Result.success();
+        }
+        else {
+            return Result.error("403","无权限");
+        }
+
+    }
+
 }
 
