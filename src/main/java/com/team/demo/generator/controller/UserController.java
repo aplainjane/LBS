@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.team.demo.config.Result;
 import com.team.demo.config.TokenEncryption;
+import com.team.demo.generator.controller.jwt.JwtUtil;
 import com.team.demo.generator.dao.DetailedDataMapper;
 import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.dao.UserMapper;
@@ -14,10 +15,13 @@ import com.team.demo.generator.entity.User;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.service.DataService;
 import com.team.demo.generator.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 /**
@@ -69,6 +73,11 @@ public class UserController {
         return user;
     }
 
+    @PutMapping("/updateuser")
+    public User getUser(@RequestBody User user) {
+        return null;
+    }
+
 
 
 
@@ -110,5 +119,32 @@ public class UserController {
         return detailedDataL;
 
     }
+
+    @PostMapping("/poi/add")
+    public Result<?> addPoi(@RequestBody DetailedData detailedData,@RequestBody Location location,@RequestParam Integer id)
+    {
+        if(id != 1)
+        {
+            return Result.error("403","无权限");
+        }
+        detailedMapper.insert(detailedData);
+        detailedMapper.insertLocation(location.getLongitude(),location.getLatitude(),detailedData.getCode());
+        return Result.success();
+    }
+
+    @DeleteMapping("/poi/delete")
+    public Result<?> deletePoi(@RequestParam String code,@RequestParam Integer id)
+    {
+        if(id != 1)
+        {
+            return Result.error("403","无权限");
+        }
+        DetailedData detailedData = detailedMapper.findBycode(code);
+        //detailedMapper.addLocate(detailedData);
+        detailedMapper.deleteById(detailedData);
+        detailedMapper.deleteBycode(code);
+        return Result.success();
+    }
+
 }
 

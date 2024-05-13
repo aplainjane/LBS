@@ -47,4 +47,18 @@
     <select id="findAll" resultType="com.team.demo.generator.entity.DetailedData">
         SELECT * FROM detaileddata
     </select>
+
+    <insert id="insertLocation" parameterType="java.util.Map">
+        INSERT INTO `reserveData` (`code`, `longitude`, `latitude`)
+        VALUES (#{code}, #{longitude}, #{latitude})
+    </insert>
+
+    <select id="findBycode" parameterType="java.lang.String" resultType="com.team.demo.generator.entity.DetailedData">
+        SELECT * from detaileddata where code = #{code}
+    </select>
+
+    <delete id="deleteBycode"  parameterType="java.lang.String">
+        delete from reserveData where code = #{code}
+    </delete>
+
 </mapper>

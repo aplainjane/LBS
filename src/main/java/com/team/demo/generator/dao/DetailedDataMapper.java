@@ -5,6 +5,7 @@ import com.team.demo.generator.entity.DetailedData;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.entity.Location;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -24,5 +25,10 @@ public interface DetailedDataMapper extends BaseMapper<DetailedData> {
 
     List<DetailedData> findAll();
 
+    void insertLocation(@Param("longitude") double longitude, @Param("latitude") double latitude, @Param("code") String code);
+
+    DetailedData findBycode(String code);
+
+    void deleteBycode(String code);
 
 }
