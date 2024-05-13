@@ -6,13 +6,10 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.team.demo.generator.dao.CommentMapper;
 import com.team.demo.generator.dao.DetailedDataMapper;
-import com.team.demo.generator.entity.Comment;
-import com.team.demo.generator.entity.DetailedData;
-import com.team.demo.generator.entity.Image;
+import com.team.demo.generator.entity.*;
 import com.team.demo.config.Result;
 import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.dao.UserMapper;
-import com.team.demo.generator.entity.User;
 import com.team.demo.generator.service.DataService;
 import com.team.demo.generator.service.ImageService;
 import com.team.demo.generator.service.UserService;
@@ -174,16 +171,13 @@ class DemoApplicationTests {
 	}
 
 	@Test
-	void testFindPoi()
+	void test()
 	{
-		List<DetailedData> a =  detailedDataMapper.findAll();
-		for(DetailedData detailedData : a)
-		{
-			detailedData.setLatitude(detailedDataMapper.addLocate(detailedData).getLatitude());
-			detailedData.setLongitude(detailedDataMapper.addLocate(detailedData).getLongitude());
-			//detailedMapper.addLocate(detailedData);
-		}
-		System.out.println(a.get(1).getLongitude());
+		Location location = new Location();
+		location.setLatitude(5);
+		location.setLongitude(10);
+		String code = "test";
+		detailedDataMapper.insertLocation(location.getLongitude(),location.getLatitude(),code);
 
 	}
 
