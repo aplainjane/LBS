@@ -9,6 +9,7 @@ import com.team.demo.generator.dao.DetailedDataMapper;
 import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.dao.UserMapper;
 import com.team.demo.generator.entity.DetailedData;
+import com.team.demo.generator.entity.Location;
 import com.team.demo.generator.entity.User;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.service.DataService;
@@ -93,6 +94,21 @@ public class UserController {
             //detailedMapper.addLocate(detailedData);
         }
         return dataService.around(latitude,longitude,DetailedDataL,radius);
+    }
+
+    @GetMapping("/poi/all")
+    public List<DetailedData> getpoi()
+    {
+        List<DetailedData> detailedDataL = detailedMapper.findAll();
+        for(DetailedData detailedData : detailedDataL)
+        {
+            Location temp = detailedMapper.addLocate(detailedData);
+            detailedData.setLatitude(temp.getLatitude());
+            detailedData.setLongitude(temp.getLongitude());
+            //detailedMapper.addLocate(detailedData);
+        }
+        return detailedDataL;
+
     }
 }
 

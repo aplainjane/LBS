@@ -174,6 +174,20 @@ class DemoApplicationTests {
 	}
 
 	@Test
+	void testFindPoi()
+	{
+		List<DetailedData> a =  detailedDataMapper.findAll();
+		for(DetailedData detailedData : a)
+		{
+			detailedData.setLatitude(detailedDataMapper.addLocate(detailedData).getLatitude());
+			detailedData.setLongitude(detailedDataMapper.addLocate(detailedData).getLongitude());
+			//detailedMapper.addLocate(detailedData);
+		}
+		System.out.println(a.get(1).getLongitude());
+
+	}
+
+	@Test
 	void testLocateImage()
 	{
 

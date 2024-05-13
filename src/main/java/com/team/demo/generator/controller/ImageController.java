@@ -5,6 +5,7 @@ import com.team.demo.config.Result;
 import com.team.demo.generator.dao.CommentMapper;
 import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.entity.Comment;
+import com.team.demo.generator.entity.DetailedData;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.service.ImageService;
 import org.springframework.core.io.Resource;
@@ -76,7 +77,7 @@ public class ImageController {
             // 后台上传
             file.transferTo(dest);
             imageMapper.insert(image);
-            return Result.success( "文件上传成功");
+            return Result.success(image.getId());
         }catch (Exception e){
             e.printStackTrace();
             return Result.error("23","异常错误");
@@ -126,7 +127,7 @@ public class ImageController {
         return imageService.around(longitude,latitude,imageL,radius);
     }
 
-    @PostMapping("/comments")
+    @GetMapping("/comments")
     public List<Comment> getImageComments(@RequestParam Integer imageid)
     {
         return commentMapper.findComment(imageid);
@@ -176,6 +177,18 @@ public class ImageController {
         }
     }
 
+    @PostMapping("/comment/add")
+    public Result<?> addComment(@RequestParam Integer userId,@RequestParam String Contain,@RequestParam Integer imageId)
+    {
+        Comment comment = new Comment();
+        comment.setContain(Contain);
+        comment.setUserid(userId);
+        comment.setImageid(imageId);
+        commentMapper.insert(comment);
+        return Result.success();
+
+    }
+
     @DeleteMapping("/image/delete")
     public Result<?> deleteImage(@RequestParam Integer imageid,@RequestParam Integer userId)
     {
@@ -200,6 +213,8 @@ public class ImageController {
         }
 
     }
+
+
 
 }
 
