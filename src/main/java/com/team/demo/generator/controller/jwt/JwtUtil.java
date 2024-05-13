@@ -65,7 +65,8 @@ public class JwtUtil {
         }
     }
 
-    public static Integer getUserId(HttpServletRequest request) {
+    public static Integer getUserId() {
+
         return (Integer) request.getAttribute("userId");
     }
 

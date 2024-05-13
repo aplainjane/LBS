@@ -17,6 +17,7 @@ import com.team.demo.generator.service.DataService;
 import com.team.demo.generator.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.apache.logging.log4j.message.ReusableMessage;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -74,7 +75,11 @@ public class UserController {
     }
 
     @PutMapping("/updateuser")
-    public User getUser(@RequestBody User user) {
+    public User getUser(@RequestBody User user, HttpServletRequest request) {
+        // 在 Controller 方法中直接使用 request 对象
+        Integer id1 = (Integer) request.getAttribute("id");
+        Integer id2 = user.getId();
+        userMapper.updateById(user);
         return null;
     }
 
