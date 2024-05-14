@@ -173,11 +173,15 @@ class DemoApplicationTests {
 	@Test
 	void test()
 	{
-		Location location = new Location();
-		location.setLatitude(5);
-		location.setLongitude(10);
-		String code = "test";
-		detailedDataMapper.insertLocation(location.getLongitude(),location.getLatitude(),code);
+		User user = new User();
+		//Integer id1 = (Integer) request.getAttribute("id");
+		Integer id2 = user.getId();
+		//
+		user.setUsername("mcy");
+		user.setId(7);
+		//user.setIntroduction("111");
+		userMapper.updateById(user);
+		//return Result.success();
 
 	}
 

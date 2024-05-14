@@ -127,6 +127,14 @@ public class ImageController {
         return imageService.around(longitude,latitude,imageL,radius);
     }
 
+    @GetMapping("/userimage")
+    public List<Image> userImage(@RequestParam Integer id)
+    {
+        /*List<Image> imageL = imageMapper.findAllImages();
+        return imageService.around(longitude,latitude,imageL,radius);*/
+        return  imageMapper.findUserImages(id);
+    }
+
     @GetMapping("/comments")
     public List<Comment> getImageComments(@RequestParam Integer imageid)
     {
