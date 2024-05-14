@@ -33,7 +33,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     void add(User user);
 
-    int updateById(User user);
+    //int updateById(User user);
 
 
     Page<User> findP(Integer page);
