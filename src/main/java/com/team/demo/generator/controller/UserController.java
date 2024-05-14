@@ -75,12 +75,16 @@ public class UserController {
     }
 
     @PutMapping("/updateuser")
-    public User getUser(@RequestBody User user, HttpServletRequest request) {
+    public Result<?> getUser(@RequestBody User user, HttpServletRequest request) {
         // 在 Controller 方法中直接使用 request 对象
         Integer id1 = (Integer) request.getAttribute("id");
         Integer id2 = user.getId();
+        if(id2 != id1)
+        {
+            return Result.error("403","无权限");
+        }
         userMapper.updateById(user);
-        return null;
+        return Result.success();
     }
 
 
