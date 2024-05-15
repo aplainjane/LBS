@@ -130,9 +130,10 @@ public class UserController {
     }
 
     @PostMapping("/poi/add")
-    public Result<?> addPoi(@RequestBody DetailedData detailedData,@RequestBody Location location,@RequestParam Integer id)
+    public Result<?> addPoi(@RequestBody DetailedData detailedData,@RequestBody Location location,HttpServletRequest request)
     {
-        if(id != 1)
+        Integer id1 = (Integer) request.getAttribute("id");
+        if(id1 != 1)
         {
             return Result.error("403","无权限");
         }
@@ -142,9 +143,10 @@ public class UserController {
     }
 
     @DeleteMapping("/poi/delete")
-    public Result<?> deletePoi(@RequestParam String code,@RequestParam Integer id)
+    public Result<?> deletePoi(@RequestParam String code,HttpServletRequest request)
     {
-        if(id != 1)
+        Integer id1 = (Integer) request.getAttribute("id");
+        if(id1 != 1)
         {
             return Result.error("403","无权限");
         }

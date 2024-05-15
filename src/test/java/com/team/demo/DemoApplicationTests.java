@@ -166,7 +166,7 @@ class DemoApplicationTests {
 	void testFindUserImage()
 	{
 
-		System.out.println(imageMapper.findUserImages(1).size());
+		System.out.println(imageMapper.findUserImages(1));
 
 	}
 
