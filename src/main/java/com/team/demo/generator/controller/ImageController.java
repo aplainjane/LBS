@@ -5,7 +5,6 @@ import com.team.demo.config.Result;
 import com.team.demo.generator.dao.CommentMapper;
 import com.team.demo.generator.dao.ImageMapper;
 import com.team.demo.generator.entity.Comment;
-import com.team.demo.generator.entity.DetailedData;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.service.ImageService;
 import org.springframework.core.io.Resource;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -186,21 +186,24 @@ public class ImageController {
     }
 
     @PostMapping("/comment/add")
-    public Result<?> addComment(@RequestParam Integer userId,@RequestParam String Contain,@RequestParam Integer imageId)
+    public Result<?> addComment(@RequestBody Comment comment)
     {
-        Comment comment = new Comment();
+        //System.out.println(Contain);
+        /*Comment comment = new Comment();
         comment.setContain(Contain);
         comment.setUserid(userId);
-        comment.setImageid(imageId);
+        comment.setImageid(imageId);*/
+        /*System.out.println(comment.getUserid());
+        System.out.println(comment.getContain());
+        System.out.println(comment.getImageid());*/
         commentMapper.insert(comment);
         return Result.success();
-
     }
 
     @DeleteMapping("/image/delete")
-    public Result<?> deleteImage(@RequestParam Integer imageid,@RequestParam Integer userId)
+    public Result<?> deleteImage(@RequestParam Integer imageId, @RequestParam Integer userId)
     {
-        Image image = imageMapper.selectById(imageid);
+        Image image = imageMapper.selectById(imageId);
         if(image == null)
         {
             return Result.error("404","未找到路径");
@@ -208,12 +211,22 @@ public class ImageController {
 
         if(Objects.equals(image.getUserId(), userId))
         {
-            List<Comment> comments = commentMapper.findComment(imageid);
+            List<Comment> comments = commentMapper.findComment(imageId);
             for(Comment comment : comments)
             {
                 commentMapper.deleteById(comment);
             }
             imageMapper.deleteById(image);
+            // 删除本地文件
+            try {
+                Path path = Paths.get(image.getPath()); // 假设Image对象中有一个方法getFilePath()返回文件的存储路径
+                if (Files.exists(path)) {
+                    Files.delete(path);
+                }
+            } catch (Exception e) {
+                return Result.error("500", "文件删除失败");
+            }
+
             return Result.success();
         }
         else {
