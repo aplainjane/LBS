@@ -78,7 +78,7 @@ public class ImageController {
             file.transferTo(dest);
             imageMapper.insert(image);
             return Result.success(image.getId());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return Result.error("23","异常错误");
         }
