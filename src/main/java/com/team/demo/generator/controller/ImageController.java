@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -147,14 +148,15 @@ public class ImageController {
     }*/
 
     @DeleteMapping("/comment/delete")
-    public Result<?> DeleteComment(@RequestParam Integer commentId,@RequestParam Integer userId)
+    public Result<?> DeleteComment(@RequestParam Integer commentId,HttpServletRequest request)
     {
+        Integer userId = (Integer) request.getAttribute("id");
         Comment comment = commentMapper.selectById(commentId);
         if(comment == null)
         {
             return Result.error("404","未找到路径");
         }
-        if(comment.getUserid() == userId)
+        if(comment.getUserid() == userId || userId == 1)
         {
             commentMapper.deleteById(commentId);
             return Result.success();
@@ -201,8 +203,9 @@ public class ImageController {
     }
 
     @DeleteMapping("/image/delete")
-    public Result<?> deleteImage(@RequestParam Integer imageId, @RequestParam Integer userId)
+    public Result<?> deleteImage(@RequestParam Integer imageId, HttpServletRequest request)
     {
+        Integer userId = (Integer) request.getAttribute("id");
         Image image = imageMapper.selectById(imageId);
         if(image == null)
         {
