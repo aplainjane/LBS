@@ -174,7 +174,7 @@ public class ImageController {
             return Result.error("404","未找到路径");
         }
         comment.setContain(newContain);
-        if(comment.getUserid() == userId)
+        if(comment.getUserid() == userId )
         {
             commentMapper.updateById(comment);
             return Result.success();
@@ -209,7 +209,7 @@ public class ImageController {
             return Result.error("404","未找到路径");
         }
 
-        if(Objects.equals(image.getUserId(), userId))
+        if(Objects.equals(image.getUserId(), userId) || userId == 1)
         {
             List<Comment> comments = commentMapper.findComment(imageId);
             for(Comment comment : comments)
