@@ -182,7 +182,7 @@ public class ImageController {
             return Result.error("404","未找到路径");
         }
         comment.setContain(newContain);
-        if(comment.getUserid() == userId )
+        if(comment.getUserid() == userId || userId == 1)
         {
             commentMapper.updateById(comment);
             return Result.success();
