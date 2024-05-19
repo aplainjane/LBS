@@ -11,7 +11,7 @@
  Target Server Version : 80036
  File Encoding         : 65001
 
- Date: 13/05/2024 17:13:45
+ Date: 19/05/2024 11:07:20
 */
 
 SET NAMES utf8mb4;
@@ -23,16 +23,40 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment`  (
   `id` int(0) NOT NULL AUTO_INCREMENT,
-  `contain` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `contain` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `userid` int(0) NULL DEFAULT NULL,
   `imageid` int(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
 -- ----------------------------
-INSERT INTO `comment` VALUES (1, '哇塞', 3, 6);
+INSERT INTO `comment` VALUES (6, 'shabby', 8, 41);
+INSERT INTO `comment` VALUES (8, '我老婆！！！', 6, 43);
+INSERT INTO `comment` VALUES (11, '姑姑！协斗的神！', 7, 46);
+INSERT INTO `comment` VALUES (12, 'my presure', 2, 47);
+INSERT INTO `comment` VALUES (16, '最喜欢玩崩铁了', 8, 48);
+INSERT INTO `comment` VALUES (18, '逆天', 7, 48);
+INSERT INTO `comment` VALUES (21, '小三月~', 8, 49);
+INSERT INTO `comment` VALUES (25, '哈哈哈', 8, 48);
+INSERT INTO `comment` VALUES (26, '好好好！', 8, 46);
+INSERT INTO `comment` VALUES (28, '差不多得了', 7, 43);
+INSERT INTO `comment` VALUES (32, '呃呃呃', 7, 46);
+INSERT INTO `comment` VALUES (34, 's', 7, 51);
+INSERT INTO `comment` VALUES (35, '武大的樱花在全国都非常有名，现在要看樱花就必须得预约，也挺方便的。武大的樱花美是其一个方面，武大整个学校的人文气息，更加的让人神往。80年代未我在这看来看樱花的人，而现在我也成了来看樱花大军中的一员。在武大呆过的那段时光，是我人生中感觉最惬意的过往，特别喜欢大风天里樱花花瓣飘满天，也深爱大雨过后铺满樱花花瓣的樱花大道。而时光如梭，予已过天命之年数载，华发已生，惟怀往昔!!', 9, 52);
+INSERT INTO `comment` VALUES (36, '说起樱花，全国看花城市很多，可今年武汉接住这波热度，樱花季有备而来，都在很认真宣传城市。有了汉马和宇辉同行双重引流，大批人群来到武汉，开年的旅游之势武汉接住了。作为本士人，我也尽量让行，网红地方咱不去。本以为错开武大盛花期，提前让就读武汉大学伙伴约车开进去，只是想走走校园的路，吃吃武大食堂。', 9, 53);
+INSERT INTO `comment` VALUES (37, '每年的3月到4月，武汉大学对外开放赏樱，社会公众可通过武汉大学官方网站、官方微信进行预约。武大校内有樱花1000多株，遍布于樱花大道及鲲鹏广场、人文科学馆、行政大楼等多处。每年3月，粉白的樱花绵延盛放，与飞檐画角、碧瓦琉璃的建筑相映成画，加之百年名校的历史底蕴和人文气息，使这里成为热门的赏樱胜地。', 9, 54);
+INSERT INTO `comment` VALUES (38, '被誉为国内最美大学的武大，虽然现在已经不是樱花季，但是游客依旧络绎不绝。\n五一期间免预约，直接刷身份证进入。武大面积挺大，樱花大道旁的樱花城堡真的是让人惊叹，老斋舍，老图书馆现在已经成为国家重点文物，无不透漏着浓郁的历史厚重感。\n现在凌波门附近正在装修，所以建议游玩的人们原路返回就好。\n', 9, 55);
+INSERT INTO `comment` VALUES (39, '很大，很漂亮，过年去的，感受高校气息。\n', 9, 56);
+INSERT INTO `comment` VALUES (40, '.周末来武大逛一逛，真的再一次感叹武大是又大又漂亮，校园绿化做得很大，植物很多，随便一拍就很好看樱花大道那块的老宿舍楼很有年代感，每天都会有很多外地游客专程来打卡拍照，领略名校风采[比心]。操场上跑道让人一下就回忆起高中跑早操的情形\n', 9, 57);
+INSERT INTO `comment` VALUES (41, '信四的菜品种类非常丰富，甜品、蔬菜、水果还有鸡鱼肉蛋应有尽有。不同窗口菜品的味道各具特色。不过，最喜欢的是信四的红烧肉，量足且味鲜。红烧肉肥而不腻，层次丰富，整体偏甜口，其中最底层还有青椒和花菜等蔬菜搭配，配上米饭，简直太美味了!信四的菜和肉整体价格相比于外面的小吃街不算贵，整体的性价比较高。对了，甜品相对来说一般还是比较贵的，买之前可以问一下价格。', 10, 58);
+INSERT INTO `comment` VALUES (42, '我要为凌波门举大旗，本来做攻略是准备去看日出的，但是没起得来，到哪里已经出太阳了。那个桥还是要小心点别摔下去了。我们就在那卡卡卡拍照，下面还会有人游泳2,旁边就是武汉大学。很长的一段路我们是打车去的，然后骑路边的护码自行车出来的，在湖边骑自行车真的超级超级舒服。\n', 10, 59);
+INSERT INTO `comment` VALUES (43, '学校环境优美，著名森林大学，已经有6年的学校体验经历，绝对可靠值得推荐，学校食堂众多，菜品丰富，不会腻歪，也不会选择困难，随意挑选就是经典，学校老师兢兢业业，学术水平很高\n', 10, 60);
+INSERT INTO `comment` VALUES (44, '华中科技大学的玉兰花盛开时，景象极为壮观。满树的玉兰花洁白如雪，花瓣层层叠叠，宛如精致的玉雕。花海中，游客们络绎不绝，纷纷驻足欣赏，拍照留念。镜头下，玉兰花的美丽被完美捕捉，每一张照片都仿佛是一幅精美的画作，令人陶醉。\n', 10, 61);
+INSERT INTO `comment` VALUES (45, '我说一个似乎没人提到的点就是华师的性别氛围很好。\n八号楼听起来像鲁迅先生的散文：我们教室外面有两间厕所，一间是女厕所，另一间也是女厕所。', 11, 62);
+INSERT INTO `comment` VALUES (46, '华师不是只有九月桂花香的~春日的花一样好看！ 刷身份证就能进校了，当散步溜达溜达还是很不错的。地式不是上坡就是下坡，减肥啊~ 饿了可以去南门吃的喝的都有！逛街出西门就是群光未来城！ 对了还推荐沁春园楼下的面包店，真的好吃不贵馅料十足。嗯哪天要再去买.', 11, 63);
+INSERT INTO `comment` VALUES (47, '小猫！', 8, 64);
 
 -- ----------------------------
 -- Table structure for detaileddata
@@ -496,32 +520,31 @@ CREATE TABLE `image`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `userId`(`userId`) USING BTREE,
   CONSTRAINT `image_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of image
 -- ----------------------------
-INSERT INTO `image` VALUES (2, 'F:\\java项目\\lbs-master\\assets\\images\\1713773954185.png', 5, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (3, 'F:\\java项目\\lbs-master\\assets\\images\\1714729432290.jpg', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (4, 'F:\\java项目\\lbs-master\\assets\\images\\1714736117469.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (5, 'F:\\java项目\\lbs-master\\assets\\images\\1714736117423.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (6, 'F:\\java项目\\lbs-master\\assets\\images\\1714740410040.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (7, 'F:\\java项目\\lbs-master\\assets\\images\\1714740445777.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (8, 'F:\\java项目\\lbs-master\\assets\\images\\1714740578001.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (9, 'F:\\java项目\\lbs-master\\assets\\images\\1714741888800.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (10, 'F:\\java项目\\lbs-master\\assets\\images\\1714742139090.png', 1, 114.40569186862554, 30.554054206674856);
-INSERT INTO `image` VALUES (11, 'F:\\java项目\\lbs-master\\assets\\images\\1715005744001.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (12, 'F:\\java项目\\lbs-master\\assets\\images\\1715006466912.png', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (13, 'F:\\java项目\\lbs-master\\assets\\images\\1715006477341.jpg', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (14, 'F:\\java项目\\lbs-master\\assets\\images\\1715047147397.png', 1, 114.36088111896764, 30.533502098063522);
-INSERT INTO `image` VALUES (15, 'F:\\java项目\\lbs-master\\assets\\images\\1715047239195.png', 1, 114.36772813336984, 30.53321460777717);
-INSERT INTO `image` VALUES (16, 'F:\\java项目\\lbs-master\\assets\\images\\1715050678522.jpg', 1, 116.30793520652882, 40.05861561613348);
-INSERT INTO `image` VALUES (17, 'F:\\java项目\\lbs-master\\assets\\images\\1715050706696.png', 1, 114.36705575358206, 30.53216705464402);
-INSERT INTO `image` VALUES (18, 'F:\\java项目\\lbs-master\\assets\\images\\1715051043537.png', 1, 114.36684713084092, 30.5321876533572);
-INSERT INTO `image` VALUES (19, 'F:\\java项目\\lbs-master\\assets\\images\\1715051200139.jpg', 1, 114.36702357205664, 30.53208657271996);
-INSERT INTO `image` VALUES (20, 'F:\\java项目\\lbs-master\\assets\\images\\1715051919218.jpg', 1, 114.36674714943767, 30.530969846635145);
-INSERT INTO `image` VALUES (21, 'F:\\java项目\\lbs-master\\assets\\images\\1715051952979.jpg', 1, 114.36694654909645, 30.53126969792201);
-INSERT INTO `image` VALUES (22, 'F:\\java项目\\lbs-master\\assets\\images\\1715052209328.jpg', 7, 114.3663737565355, 30.531257072380388);
+INSERT INTO `image` VALUES (41, 'F:\\java项目\\lbs-master\\assets\\images\\1715777775838.png', 8, 114.36243553128142, 30.533480256167053);
+INSERT INTO `image` VALUES (43, 'F:\\java项目\\lbs-master\\assets\\images\\1715782705034.png', 6, 114.35980531331938, 30.53298135789007);
+INSERT INTO `image` VALUES (46, 'F:\\java项目\\lbs-master\\assets\\images\\1715783211625.png', 7, 114.36217580995846, 30.53296246186859);
+INSERT INTO `image` VALUES (47, 'F:\\java项目\\lbs-master\\assets\\images\\1715783851145.png', 2, 114.36086255952664, 30.531933419139037);
+INSERT INTO `image` VALUES (48, 'F:\\java项目\\lbs-master\\assets\\images\\1716060304734.jpg', 8, 114.36111270311618, 30.533146119897427);
+INSERT INTO `image` VALUES (49, 'F:\\java项目\\lbs-master\\assets\\images\\1716065396971.png', 8, 114.36177969495726, 30.533278231491394);
+INSERT INTO `image` VALUES (51, 'F:\\java项目\\lbs-master\\assets\\images\\1716079527242.jpg', 7, 114.3609378731911, 30.534244926445552);
+INSERT INTO `image` VALUES (52, 'F:\\java项目\\lbs-master\\assets\\images\\1716079922603.jpg', 9, 114.36968569387784, 30.545720080204948);
+INSERT INTO `image` VALUES (53, 'F:\\java项目\\lbs-master\\assets\\images\\1716080007886.jpg', 9, 114.3705644989718, 30.54582395323934);
+INSERT INTO `image` VALUES (54, 'F:\\java项目\\lbs-master\\assets\\images\\1716080211089.jpg', 9, 114.37000269304654, 30.546115482905932);
+INSERT INTO `image` VALUES (55, 'F:\\java项目\\lbs-master\\assets\\images\\1716080290039.jpg', 9, 114.37290370421641, 30.544002857307547);
+INSERT INTO `image` VALUES (56, 'F:\\java项目\\lbs-master\\assets\\images\\1716080349943.jpg', 9, 114.36460191368488, 30.539750376773352);
+INSERT INTO `image` VALUES (57, 'F:\\java项目\\lbs-master\\assets\\images\\1716080423750.jpg', 9, 114.36515666602544, 30.540544459472464);
+INSERT INTO `image` VALUES (58, 'F:\\java项目\\lbs-master\\assets\\images\\1716080572438.jpg', 10, 114.36454941662106, 30.53335044255149);
+INSERT INTO `image` VALUES (59, 'F:\\java项目\\lbs-master\\assets\\images\\1716080649567.jpg', 10, 114.3661943830709, 30.552294187661968);
+INSERT INTO `image` VALUES (60, 'F:\\java项目\\lbs-master\\assets\\images\\1716080734753.jpg', 10, 114.42241459751786, 30.514941552323137);
+INSERT INTO `image` VALUES (61, 'F:\\java项目\\lbs-master\\assets\\images\\1716080771299.jpg', 10, 114.41749288529314, 30.52040590187918);
+INSERT INTO `image` VALUES (62, 'F:\\java项目\\lbs-master\\assets\\images\\1716080893862.jpg', 11, 114.36490454760101, 30.525379987966364);
+INSERT INTO `image` VALUES (63, 'F:\\java项目\\lbs-master\\assets\\images\\1716080926135.jpg', 11, 114.36888184438376, 30.522780418332328);
+INSERT INTO `image` VALUES (64, 'F:\\java项目\\lbs-master\\assets\\images\\1716081321100.png', 8, 114.36180810135127, 30.533656486030193);
 
 -- ----------------------------
 -- Table structure for reservedata
@@ -534,7 +557,7 @@ CREATE TABLE `reservedata`  (
   `latitude` double NULL DEFAULT NULL,
   `longitude` double NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 428 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 430 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of reservedata
@@ -978,18 +1001,21 @@ CREATE TABLE `user`  (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `introduction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'Alice', 'password123', 'aaa');
+INSERT INTO `user` VALUES (1, 'Alice', 'password123', 'administer user');
 INSERT INTO `user` VALUES (2, 'Bob', 'password456', 'hahaha');
 INSERT INTO `user` VALUES (3, 'Charlie', 'password789', 'nice');
 INSERT INTO `user` VALUES (4, 'Diana', 'password012', 'sad');
 INSERT INTO `user` VALUES (5, 'Lucy', 'Team A', 'this is me');
-INSERT INTO `user` VALUES (6, 'lky', '111111', NULL);
-INSERT INTO `user` VALUES (7, 'mcy', '222222', NULL);
-INSERT INTO `user` VALUES (8, 'lqw', '114514', NULL);
+INSERT INTO `user` VALUES (6, 'lky', 'cz9966523', '你抓不住我，我是山里灵活的狗');
+INSERT INTO `user` VALUES (7, 'mcy', '333333', '我是lqw的叠');
+INSERT INTO `user` VALUES (8, 'lqw', '114514', '我是小狗');
+INSERT INTO `user` VALUES (9, '大众点评', '123456', '致力于分享热门评论');
+INSERT INTO `user` VALUES (10, '华小科', '123456', '是可爱的华小科一枚');
+INSERT INTO `user` VALUES (11, '小鲸', '123456', ' (/≧▽≦)/');
 
 SET FOREIGN_KEY_CHECKS = 1;
