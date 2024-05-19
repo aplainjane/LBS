@@ -142,6 +142,12 @@ public class ImageController {
         return commentMapper.findComment(imageid);
     }
 
+    @GetMapping("/user/comments")
+    public List<Comment> getUserComments(@RequestParam Integer userid)
+    {
+        return commentMapper.findUserComment(userid);
+    }
+
     /*@GetMapping("/findImageByObject")
     public Image findImage(@PathVariable Integer id){
         return imageMapper.selectById(id);

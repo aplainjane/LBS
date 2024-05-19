@@ -23,4 +23,6 @@ public interface CommentMapper extends BaseMapper<Comment> {
 
 
     List<Comment> findComment(Integer imageid);
+
+    List<Comment> findUserComment(Integer userid);
 }
