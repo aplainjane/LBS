@@ -100,18 +100,18 @@ public class UserController {
 
 
 
-    @GetMapping("/getLocation/{id}")
+    @GetMapping("/getLocation")
     public List<DetailedData> locateLink(@RequestParam double latitude,
                                          @RequestParam double longitude,@RequestParam double radius)
     {
-        List<DetailedData> DetailedDataL = detailedMapper.findAll();
-        for(DetailedData detailedData : DetailedDataL)
+        List<DetailedData> dataL = detailedMapper.findAll();
+        for(DetailedData detailedData : dataL)
         {
             detailedData.setLatitude(detailedMapper.addLocate(detailedData).getLatitude());
             detailedData.setLongitude(detailedMapper.addLocate(detailedData).getLongitude());
             //detailedMapper.addLocate(detailedData);
         }
-        return dataService.around(latitude,longitude,DetailedDataL,radius);
+        return dataService.around(116,36,dataL,500000);
     }
 
     @GetMapping("/poi/all")

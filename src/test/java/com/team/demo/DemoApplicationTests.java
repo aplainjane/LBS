@@ -206,12 +206,16 @@ class DemoApplicationTests {
 			detailedData.setLongitude(detailedDataMapper.addLocate(detailedData).getLongitude());
 			//detailedMapper.addLocate(detailedData);
 		}
-		List<DetailedData> t = dataService.around(116,36,imageL,500);
+		List<DetailedData> t = dataService.around(116,36,imageL,500000);
 		//System.out.println(t);
-		//System.out.println(imageL);
-		double distance = GeoUtils.calculateDistance(40.05861561613348, 116.30793520652882, 40.05861561613348, 116.30793520652882);
-		System.out.println(distance);
+		for(DetailedData detailedData : t)
+		{
+			System.out.println(detailedData.getCode());
+		}
 
+		/*double distance = GeoUtils.calculateDistance(40.05861561613348, 116.30793520652882, 40.05861561613348, 116.30793520652882);
+		System.out.println(distance);
+*/
 	}
 
 

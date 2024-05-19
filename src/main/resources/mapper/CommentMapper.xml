@@ -61,4 +61,8 @@
         SELECT * FROM comment WHERE imageid = #{imageid}
     </select>
 
+    <select id="findComment" parameterType="java.lang.Integer" resultType="com.team.demo.generator.entity.Comment">
+        SELECT * FROM comment WHERE userid = #{userid}
+    </select>
+
 </mapper>
