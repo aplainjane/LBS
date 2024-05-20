@@ -157,5 +157,15 @@ public class UserController {
         return Result.success();
     }
 
+    @PostMapping("/poi/update")
+    public Result<?> updatePoi(@RequestBody List<DetailedData> list)
+    {
+        for(DetailedData data : list)
+        {
+            detailedMapper.insertLocation(data.getLongitude(),data.getLatitude(), data.getCode());
+        }
+        return Result.success();
+    }
+
 }
 

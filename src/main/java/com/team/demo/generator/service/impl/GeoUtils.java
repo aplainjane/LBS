@@ -5,10 +5,10 @@ public class GeoUtils {
     /**
      * 计算两点间的球面距离。
      *
-     * @param lat1 第一个点的纬度
-     * @param lon1 第一个点的经度
-     * @param lat2 第二个点的纬度
-     * @param lon2 第二个点的经度
+     * @param startLatitude 第一个点的纬度
+     * @param startLongitude 第一个点的经度
+     * @param endLatitude 第二个点的纬度
+     * @param endLongitude 第二个点的经度
      * @return 两点间的距离，单位为千米
      */
     public static double calculateDistance(double startLatitude, double startLongitude, double endLatitude, double endLongitude) {
