@@ -15,6 +15,7 @@ import com.team.demo.generator.entity.User;
 import com.team.demo.generator.entity.Image;
 import com.team.demo.generator.service.DataService;
 import com.team.demo.generator.service.UserService;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.ibatis.annotations.Param;
 import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.http.ResponseEntity;
@@ -165,6 +166,77 @@ public class UserController {
             detailedMapper.insertLocation(data.getLongitude(),data.getLatitude(), data.getCode());
         }
         return Result.success();
+    }
+
+
+    @GetMapping("/poi/get")
+    public List<DetailedData> getPoi(@RequestParam String code,@RequestParam String type,@RequestParam String department,@RequestParam String settime)
+    {
+        List<DetailedData> poiList = detailedMapper.findAll();
+        List<DetailedData> returnList_code = new ArrayList<>();
+        List<DetailedData> returnList_type = new ArrayList<>();
+        List<DetailedData> returnList_department = new ArrayList<>();
+        List<DetailedData> returnList_settime = new ArrayList<>();
+        if(code!=null)
+        {
+            for(DetailedData poi : poiList)
+            {
+                if(poi.getCode().contains(code))
+                {
+                    returnList_code.add((poi));
+                }
+            }
+        }
+        else
+        {
+            returnList_code = poiList;
+        }
+        if(type!=null)
+        {
+            for(DetailedData poi : poiList)
+            {
+                if(poi.getType().contains(type))
+                {
+                    returnList_type.add((poi));
+                }
+            }
+        }
+        else
+        {
+            returnList_type = poiList;
+        }
+        if(department!=null)
+        {
+            for(DetailedData poi : poiList)
+            {
+                if(poi.getDepartment().contains(department))
+                {
+                    returnList_department.add((poi));
+                }
+            }
+        }
+        else
+        {
+            returnList_department = poiList;
+        }
+        if(settime != null)
+        {
+            for(DetailedData poi : poiList)
+            {
+                if(Integer.parseInt(poi.getSetTime()) >= Integer.parseInt(settime))
+                {
+                    returnList_settime.add((poi));
+                }
+            }
+        }
+        else
+        {
+            returnList_settime = poiList;
+        }
+        List<DetailedData> intersection = (List<DetailedData>) CollectionUtils.intersection(returnList_code, returnList_type);
+        intersection = (List<DetailedData>) CollectionUtils.intersection(intersection ,returnList_department);
+        intersection = (List<DetailedData>) CollectionUtils.intersection(intersection ,returnList_settime);
+        return intersection;
     }
 
 }
