@@ -14,9 +14,11 @@ import com.team.demo.generator.service.DataService;
 import com.team.demo.generator.service.ImageService;
 import com.team.demo.generator.service.UserService;
 import com.team.demo.generator.service.impl.GeoUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -216,6 +218,65 @@ class DemoApplicationTests {
 		/*double distance = GeoUtils.calculateDistance(40.05861561613348, 116.30793520652882, 40.05861561613348, 116.30793520652882);
 		System.out.println(distance);
 */
+	}
+
+
+	@Test
+	void getPoi()
+	{
+		String code = "京";
+		String type = "森林生态";
+		String department = "林业";
+		String settime = "19850401";
+		List<DetailedData> poiList = detailedDataMapper.findAll();
+		List<DetailedData> returnList_code = new ArrayList<>();
+		List<DetailedData> returnList_type = new ArrayList<>();
+		List<DetailedData> returnList_department = new ArrayList<>();
+		List<DetailedData> returnList_settime = new ArrayList<>();
+		if(code!=null)
+		{
+			for(DetailedData poi : poiList)
+			{
+				if(poi.getCode().contains(code))
+				{
+					returnList_code.add((poi));
+				}
+			}
+		}
+		if(type!=null)
+		{
+			for(DetailedData poi : poiList)
+			{
+				if(poi.getType().contains(type))
+				{
+					returnList_type.add((poi));
+				}
+			}
+		}
+		if(department!=null)
+		{
+			for(DetailedData poi : poiList)
+			{
+				if(poi.getDepartment().contains(department))
+				{
+					returnList_department.add((poi));
+				}
+			}
+		}
+		if(settime != null)
+		{
+			for(DetailedData poi : poiList)
+			{
+				if(Integer.parseInt(poi.getSetTime()) >= Integer.parseInt(settime))
+				{
+					returnList_settime.add((poi));
+				}
+			}
+		}
+		List<DetailedData> intersection = (List<DetailedData>) CollectionUtils.intersection(returnList_code, returnList_type);
+		intersection = (List<DetailedData>) CollectionUtils.intersection(intersection ,returnList_department);
+		intersection = (List<DetailedData>) CollectionUtils.intersection(intersection ,returnList_settime);
+		System.out.println(intersection.get(1).getName());
 	}
 
 
