@@ -138,6 +138,10 @@ public class UserController {
         {
             return Result.error("403","无权限");
         }
+        if(detailedMapper.findBycode(detailedData.getCode())!=null)
+        {
+            return Result.error("403","已有数据");
+        }
         detailedMapper.insert(detailedData);
         detailedMapper.insertLocation(location.getLongitude(),location.getLatitude(),detailedData.getCode());
         return Result.success();
@@ -177,7 +181,7 @@ public class UserController {
         List<DetailedData> returnList_type = new ArrayList<>();
         List<DetailedData> returnList_department = new ArrayList<>();
         List<DetailedData> returnList_settime = new ArrayList<>();
-        if(code!=null)
+        if(code!= "")
         {
             for(DetailedData poi : poiList)
             {
@@ -191,7 +195,7 @@ public class UserController {
         {
             returnList_code = poiList;
         }
-        if(type!=null)
+        if(type!= "")
         {
             for(DetailedData poi : poiList)
             {
@@ -205,7 +209,7 @@ public class UserController {
         {
             returnList_type = poiList;
         }
-        if(department!=null)
+        if(department!= "")
         {
             for(DetailedData poi : poiList)
             {
@@ -219,7 +223,7 @@ public class UserController {
         {
             returnList_department = poiList;
         }
-        if(settime != null)
+        if(settime != "")
         {
             for(DetailedData poi : poiList)
             {
