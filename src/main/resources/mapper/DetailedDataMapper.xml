@@ -13,11 +13,12 @@
         <result column="level" property="level" />
         <result column="settime" property="settime" />
         <result column="department" property="department" />
+        <result column="imageid" property="imageid" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        code, name, size, locate, protectObject, type, level, settime, department
+        code, name, size, locate, protectObject, type, level, settime, department,imageid
     </sql>
 
     <!--<update id="updateBalanceByIds">

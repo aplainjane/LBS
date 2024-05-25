@@ -172,6 +172,24 @@ public class UserController {
         return Result.success();
     }
 
+    @PostMapping("/poi/dataupdate")
+    public Result<?> changePoi(@RequestBody DetailedData detailedData,HttpServletRequest request)
+    {
+        Integer id1 = (Integer) request.getAttribute("id");
+        if(id1 != 1)
+        {
+            return Result.error("403","无权限");
+        }
+        DetailedData data = detailedMapper.findBycode(detailedData.getCode());
+        if(data == null)
+        {
+            return Result.error("404","找不到目标文件");
+        }
+        detailedMapper.updateById(data);
+        return Result.success();
+    }
+
+
 
     @GetMapping("/poi/get")
     public List<DetailedData> getPoi(@RequestParam String code,@RequestParam String type,@RequestParam String department,@RequestParam String settime)

@@ -58,6 +58,9 @@ public class DetailedData implements Serializable {
     @TableField("protectObject")
     private String protectObject;
 
+    @TableField("imageid")
+    private int imageid;
+
     /**
      * 类型
      */
