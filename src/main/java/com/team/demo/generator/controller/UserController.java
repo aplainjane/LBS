@@ -131,7 +131,7 @@ public class UserController {
     }
 
     @PostMapping("/poi/add")
-    public Result<?> addPoi(@RequestBody DetailedData detailedData,@RequestBody Location location,HttpServletRequest request)
+    public Result<?> addPoi(@RequestBody DetailedData detailedData,HttpServletRequest request)
     {
         Integer id1 = (Integer) request.getAttribute("id");
         if(id1 != 1)
@@ -143,7 +143,7 @@ public class UserController {
             return Result.error("403","已有数据");
         }
         detailedMapper.insert(detailedData);
-        detailedMapper.insertLocation(location.getLongitude(),location.getLatitude(),detailedData.getCode());
+        detailedMapper.insertLocation(detailedData.getLongitude(),detailedData.getLatitude(),detailedData.getCode());
         return Result.success();
     }
 
@@ -185,6 +185,7 @@ public class UserController {
         {
             return Result.error("404","找不到目标文件");
         }
+        data = detailedData;
         detailedMapper.updateById(data);
         return Result.success();
     }
@@ -258,6 +259,12 @@ public class UserController {
         List<DetailedData> intersection = (List<DetailedData>) CollectionUtils.intersection(returnList_code, returnList_type);
         intersection = (List<DetailedData>) CollectionUtils.intersection(intersection ,returnList_department);
         intersection = (List<DetailedData>) CollectionUtils.intersection(intersection ,returnList_settime);
+        for(DetailedData detailedData : intersection)
+        {
+            detailedData.setLatitude(detailedMapper.addLocate(detailedData).getLatitude());
+            detailedData.setLongitude(detailedMapper.addLocate(detailedData).getLongitude());
+            //detailedMapper.addLocate(detailedData);
+        }
         return intersection;
     }
 
