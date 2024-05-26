@@ -175,16 +175,7 @@ class DemoApplicationTests {
 	@Test
 	void test()
 	{
-		User user = new User();
-		//Integer id1 = (Integer) request.getAttribute("id");
-		Integer id2 = user.getId();
-		//
-		user.setUsername("mcy");
-		user.setId(7);
-		//user.setIntroduction("111");
-		userMapper.updateById(user);
-		//return Result.success();
-
+		System.out.println(detailedDataMapper.findBycode("京13").getImageid());
 	}
 
 	@Test
