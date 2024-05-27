@@ -112,7 +112,7 @@ public class UserController {
             detailedData.setLongitude(detailedMapper.addLocate(detailedData).getLongitude());
             //detailedMapper.addLocate(detailedData);
         }
-        return dataService.around(116,36,dataL,500000);
+        return dataService.around(longitude,latitude,dataL,radius);
     }
 
     @GetMapping("/poi/all")
@@ -193,7 +193,7 @@ public class UserController {
 
 
     @GetMapping("/poi/get")
-    public List<DetailedData> getPoi(@RequestParam String code,@RequestParam String type,@RequestParam String department,@RequestParam String settime)
+    public List<DetailedData> getPoi(@RequestParam(defaultValue = "")  String code, @RequestParam(defaultValue = "")  String type,@RequestParam(defaultValue = "")  String department,@RequestParam(defaultValue = "19490101")  String settime)
     {
         List<DetailedData> poiList = detailedMapper.findAll();
         List<DetailedData> returnList_code = new ArrayList<>();
