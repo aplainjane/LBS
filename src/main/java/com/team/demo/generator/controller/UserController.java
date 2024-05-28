@@ -130,6 +130,7 @@ public class UserController {
 
     }
 
+    
     @PostMapping("/poi/add")
     public Result<?> addPoi(@RequestBody DetailedData detailedData,HttpServletRequest request)
     {
@@ -266,6 +267,50 @@ public class UserController {
             //detailedMapper.addLocate(detailedData);
         }
         return intersection;
+    }
+
+
+    @GetMapping("/poi/getRect")
+    public List<DetailedData> getPoiByRect(
+            @RequestParam double startLng,
+            @RequestParam double startLat,
+            @RequestParam double endLng,
+            @RequestParam double endLat) {
+
+        List<DetailedData> positions = getPositions(); // 获取所有的positions数组
+        List<DetailedData> result = new ArrayList<>();
+
+        double minLng = Math.min(startLng, endLng);
+        double maxLng = Math.max(startLng, endLng);
+        double minLat = Math.min(startLat, endLat);
+        double maxLat = Math.max(startLat, endLat);
+
+        for (DetailedData position : positions) {
+            if (isPointInRect(position, minLng, maxLng, minLat, maxLat)) {
+                result.add(position);
+            }
+        }
+
+        return result;
+    }
+
+    private boolean isPointInRect(DetailedData position, double minLng, double maxLng, double minLat, double maxLat) {
+        return position.getLongitude() >= minLng && position.getLongitude() <= maxLng &&
+                position.getLatitude() >= minLat && position.getLatitude() <= maxLat;
+    }
+
+    private List<DetailedData> getPositions() {
+        // 这里可以从数据库或其他数据源获取positions数组
+        // 示例代码中返回一个硬编码的列表
+        List<DetailedData> positions = detailedMapper.findAll();
+        for(DetailedData data : positions)
+        {
+            data.setLongitude(detailedMapper.addLocate(data).getLongitude());
+            data.setLatitude(detailedMapper.addLocate(data).getLatitude());
+        }
+
+        // 添加更多位置
+        return positions;
     }
 
 }
