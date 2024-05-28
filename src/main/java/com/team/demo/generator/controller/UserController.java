@@ -294,9 +294,21 @@ public class UserController {
         return result;
     }
 
-    private boolean isPointInRect(DetailedData position, double minLng, double maxLng, double minLat, double maxLat) {
-        return position.getLongitude() >= minLng && position.getLongitude() <= maxLng &&
-                position.getLatitude() >= minLat && position.getLatitude() <= maxLat;
+    private boolean isPointInRect(DetailedData position, double startLng, double endLng, double startLat, double endLat) {
+        double lng = position.getLongitude();
+        double lat = position.getLatitude();
+
+        // 处理经度的突变情况
+        boolean inLngRange = (startLng <= endLng)
+                ? (lng >= startLng && lng <= endLng)
+                : (lng >= startLng || lng <= endLng);
+
+        // 处理纬度的突变情况
+        boolean inLatRange = (startLat <= endLat)
+                ? (lat >= startLat && lat <= endLat)
+                : (lat >= startLat || lat <= endLat);
+
+        return inLngRange && inLatRange;
     }
 
     private List<DetailedData> getPositions() {
